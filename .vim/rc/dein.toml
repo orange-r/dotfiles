@@ -50,3 +50,4 @@ hook_add = '''
 
 [[plugins]] # ""や''などの、テキストを囲む要素の自動入力、差し替え、削除など
 repo = 'tpope/vim-surround'
+

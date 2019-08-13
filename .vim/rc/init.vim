@@ -1,4 +1,4 @@
-"プラグインが実際にインストールされるディレクトリ
+"プラグインが実際にインストールされるディレクトリ                                                                                                                               
 let s:dein_dir = expand('~/dotfiles/.vim/dein')
 " dein.vim 本体
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
@@ -166,3 +166,4 @@ if has('syntax')
   augroup END
   call ZenkakuSpace()
 endif
+

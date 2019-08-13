@@ -1,0 +1,52 @@
+[[plugins]] # Required
+repo = '/Users/mikami/.cache/dein/repos/github.com/Shougo/dein.vim'
+
+[[plugins]] # NERD tree
+repo = 'scrooloose/nerdtree'
+[[plugins]]
+repo = 'jistr/vim-nerdtree-tabs'
+[[plugins]]
+repo = 'Xuyuanp/nerdtree-git-plugin'
+
+
+[[plugins]] # 見た目
+repo = 'vim-airline/vim-airline'
+depends = ['vim-airline-themes']
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+hook_add = '''
+  " Powerline系フォントを利用する
+  let g:airline_powerline_fonts = 1
+  " ブランチ情報を表示する
+  let g:airline#extensions#branch#enabled = 1
+  " theme for vim-airline-themes
+  let g:airline_theme='murmur'
+'''
+
+[[plugins]] # comment out
+repo = 'tyru/caw.vim'
+hook_add = '''
+  " Ctrl + Cの連続でコメントをトグル
+  nmap <C-c><C-c> <Plug>(caw:hatpos:toggle)
+  vmap <C-c><C-c> <Plug>(caw:hatpos:toggle)
+'''
+
+[[plugins]] # viewable indent
+repo = 'Yggdroot/indentLine'
+hook_add = '''
+  let g:indentLine_char = '¦'
+'''
+
+[[plugins]] # ファイル末尾の余分なスペースをハイライト
+repo = 'bronson/vim-trailing-whitespace'
+
+[[plugins]] # j k 移動の高速化
+repo = 'rhysd/accelerated-jk'
+hook_add = '''
+  " accelerated-jk set up
+  nmap j <Plug>(accelerated_jk_gj)
+  nmap k <Plug>(accelerated_jk_gk)
+'''
+
+[[plugins]] # ""や''などの、テキストを囲む要素の自動入力、差し替え、削除など
+repo = 'tpope/vim-surround'

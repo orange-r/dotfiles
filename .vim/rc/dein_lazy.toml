@@ -1,0 +1,43 @@
+[[plugins]]
+repo = 'tpope/vim-rails'
+on_ft = ['ruby']
+
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = ['go']
+
+[[plugins]]
+repo = 'hail2u/vim-css3-syntax'
+on_ft = ['css','scss','sass']
+
+[[plugins]]
+repo = 'cakebaker/scss-syntax.vim'
+on_ft = ['css','scss','sass']
+
+[[plugins]]
+repo = 'elzr/vim-json'
+on_ft = ['json']
+
+[[plugins]]
+repo = 'posva/vim-vue'
+on_ft = ['vue']
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = ['toml']
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+on_ft = ['markdown']
+hook_add = '''
+  let g:vim_markdown_folding_disabled = 1
+  let g:vim_markdown_conceal = 0
+'''
+
+[[plugins]]
+repo = 'elixir-editors/vim-elixir'
+on_ft = ['elixir']
+[[plugins]]
+repo = 'mattreduce/vim-mix'
+on_ft = ['elixir']
+

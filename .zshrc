@@ -10,12 +10,15 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # golang
-export GOPATH=$HOME/projects/golang
+export GOPATH=$HOME/go
 export GOROOT=$( go env GOROOT )
 export PATH=$GOPATH/bin:$PATH
 
 # Docker
 export PATH="/Applications/Docker.app/Contents/Resources/bin:$PATH"
+
+# nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 ########
 # util #
@@ -49,6 +52,8 @@ zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
 # 移動系強化プラグイン
 zplug "b4b4r07/enhancd", use:init.sh
+# dockerコマンド補完
+# zplug "docker/cli", use:"contrib/completion/zsh/_docker"
 
 # PowerLine系
 zplug "powerline/powerline", use:powerline/bindings/zsh
@@ -111,6 +116,15 @@ alias vvrc='vim ~/.vimrc'
 alias fgrep='find_grep'
 alias ggrep='git grep -n'
 
+# vagrant
+alias vu='vagrant up'
+alias vh='vagrant halt'
+alias vr='vagrant reload'
+alias vs='vagrant ssh'
+
+# golang
+alias cd-go-src='cd $GOPATH/src'
+
 ######################
 # function
 function find_grep(){
@@ -120,61 +134,6 @@ function find_grep(){
 }
 alias codegrep='find . -path ./.git -prune -o -path ./log -prune -o -type f -print0 | xargs -0 grep -n -E $1'
 
-function target-env(){
-  echo "------------------------------"
-  echo " 対象環境を入力して下さい.    "
-  echo "------------------------------"
-  echo " 1 -> staging                 "
-  echo " 2 -> production              "
-}
-
-function target-env-color(){
-  echo "------------------------------"
-  echo " 対象カラーを入力して下さい.  "
-  echo "------------------------------"
-  echo " 1 -> bl                      "
-  echo " 2 -> gr                      "
-}
-
-function target-project(){
-  echo "------------------------------"
-  echo " 対象を入力して下さい.        "
-  echo "------------------------------"
-  echo " 1 -> PC                      "
-  echo " 2 -> SP                      "
-  echo " 3 -> API                     "
-}
-
-function cancellation-induction-msg(){
-  echo "------------------------------"
-  echo " 処理をキャンセル.            "
-  echo "------------------------------"
-  echo " 0 -> exit                    "
-}
-
-function dialogue(){
-  if [ $# -eq 0 ];then
-    target-env
-    cancellation-induction-msg
-    read input
-    dialogue $input
-  elif [ $1 -eq 1 ];then     # dialogue 1
-    if [ $# -eq 1 ];then
-    elif [ $2 -eq 1 ];then   # dialogue 1 1
-      if [ $# -eq 2 ];then
-      elif [ $3 -eq 1 ];then
-      elif [ $3 -eq 2 ];then
-      elif [ $3 -eq 3 ];then
-      fi
-    elif [ $2 -eq 2 ];then
-    fi
-  elif [ $# -eq 1 ] && [ $1 -eq 2 ];then
-  elif [ $# -eq 1 ] && [ $1 -eq 0 ];then
-    exit 1
-  else
-  fi
-  echo $1
-}
 
 function ls-color(){
   for c in {000..255}; do echo -n "\e[38;5;${c}m $c" ; [ $(($c%16)) -eq 15 ] && echo;done;echo
@@ -229,3 +188,5 @@ POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=''
 # history search
 bindkey '^P' history-beginning-search-backward
 bindkey '^N' history-beginning-search-forward
+# export PATH="/usr/local/opt/openssl/bin:$PATH"
+# export PATH="/usr/local/opt/sqlite/bin:$PATH"

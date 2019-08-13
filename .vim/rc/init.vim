@@ -26,29 +26,11 @@ if dein#load_state(s:dein_dir)
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
   " Required:
-  call dein#add('/Users/mikami/.cache/dein/repos/github.com/Shougo/dein.vim')
+  " call dein#add('/Users/mikami/.cache/dein/repos/github.com/Shougo/dein.vim')
 
   " Add or remove your plugins here:
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
-
-  " NERD tree
-  call dein#add('scrooloose/nerdtree')
-  call dein#add('jistr/vim-nerdtree-tabs')
-  call dein#add('Xuyuanp/nerdtree-git-plugin')
-
-  " 見た目
-  call dein#add('vim-airline/vim-airline')
-  call dein#add('vim-airline/vim-airline-themes')
-
-  " viewable indent
-  call dein#add('Yggdroot/indentLine')
-
-  " ファイル末尾の余分なスペースをハイライト
-  call dein#add('bronson/vim-trailing-whitespace')
-
-  " j k 移動の高速化
-  call dein#add('rhysd/accelerated-jk')
 
   " vim で git 操作
   call dein#add('tpope/vim-fugitive')
@@ -67,32 +49,18 @@ if dein#load_state(s:dein_dir)
   call dein#add('osyo-manga/vim-over')
 
   " syntax
-  call dein#add('hail2u/vim-css3-syntax')
   call dein#add('othree/html5.vim')
   call dein#add('pangloss/vim-javascript')
 
   " ruby
   call dein#add('tpope/vim-endwise')
   call dein#add('osyo-manga/vim-monster')
-  call dein#add('todesking/ruby_hl_lvar.vim')
-  call dein#add('tpope/vim-rails')
-
-  " elixir
-  call dein#add('elixir-editors/vim-elixir')
-  call dein#add('mattreduce/vim-mix')
-
-  " golang
-  call dein#add('fatih/vim-go')
-
-  " golang
-  " call dein#add('fatih/vim-go')
-  " call dein#add('nsf/gocode')
+  " call dein#add('todesking/ruby_hl_lvar.vim')
 
   " quickrun
   call dein#add('thinca/vim-quickrun')
 
-  " comment out
-  call dein#add('tyru/caw.vim')
+  call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 
   call dein#add('ctrlpvim/ctrlp.vim')
 
@@ -105,11 +73,8 @@ if dein#load_state(s:dein_dir)
   " キャメルケース、スネークケース
   call dein#add('tpope/vim-abolish')
 
-  " JSON
-  call dein#add('elzr/vim-json')
-
   " markdown'
-  call dein#add('plasticboy/vim-markdown')
+  " call dein#add('plasticboy/vim-markdown')
   call dein#add('kannokanno/previm')
 
   " open Typora :Typora
@@ -135,15 +100,6 @@ colorscheme molokai
 syntax on
 
 """""""""""""""""""""""""""""
-" vim-airline set up
-let g:airline_powerline_fonts = 1 " Powerline系フォントを利用する
-let g:airline#extensions#branch#enabled = 1 " ブランチ情報を表示する
-let g:airline_theme='murmur' " theme for vim-airline-themes
-"""""""""""""""""""""""""""""
-" accelerated-jk set up
-nmap j <Plug>(accelerated_jk_gj)
-nmap k <Plug>(accelerated_jk_gk)
-"""""""""""""""""""""""""""""
 " neocomplete.vim set up
 " let g:neocomplete#enable_at_startup = 1 " 自動補完機能を有効にする
 """""""""""""""""""""""""""""
@@ -155,26 +111,11 @@ nmap # <Plug>(anzu-sharp)
 nmap <silent> <ESC><ESC> :<C-u>nohlsearch<CR><Plug>(anzu-clear-search-status)
 " set statusline=%{anzu#search_status()}
 """""""""""""""""""""""""""""
-" caw.vim set up
-" Ctrl + Cの連続でコメントをトグル
-nmap <C-c><C-c> <Plug>(caw:hatpos:toggle)
-vmap <C-c><C-c> <Plug>(caw:hatpos:toggle)
-"""""""""""""""""""""""""""""
-" indentLine set up
-let g:indentLine_char = '¦'
-"""""""""""""""""""""""""""""
 " osyo-manga/vim-monster set up
 " vim-monsterを有効にする
 let g:neocomplete#sources#omni#input_patterns = {
 \  'ruby': '[^. *\t]\.\w*\|\h\w*::'
 \}
-
-
-"""""""""""""""""""""""""""""
-" plasticboy/vim-markdown
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_conceal = 0
-
 """""""""""""""""""""""""""""
 " kannokanno/previm
 let g:previm_open_cmd = 'open -a Google\ Chrome'
@@ -184,6 +125,18 @@ augroup PrevimSettings
 augroup END
 
 let g:previm_enable_realtime = 1
+
+let g:quickrun_config = get(g:, 'quickrun_config', {})
+let g:quickrun_config._ = {
+      \ 'runner'    : 'vimproc',
+      \ 'runner/vimproc/updatetime' : 60,
+      \ 'outputter' : 'error',
+      \ 'outputter/error/success' : 'buffer',
+      \ 'outputter/error/error'   : 'quickfix',
+      \ 'outputter/buffer/split'  : ':rightbelow 8sp',
+      \ 'outputter/buffer/close_on_empty' : 1,
+      \ }
+
 
 "End dein Scripts-------------------------
 

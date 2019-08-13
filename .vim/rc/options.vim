@@ -1,3 +1,7 @@
+set fileformats=unix,dos,mac
+
+set fileencodings=utf-8,sjis
+
 " Mac で「delete」を有効にする
 set backspace=indent,eol,start
 "文字コードをUFT-8に設定
@@ -58,3 +62,6 @@ set hlsearch
 set history=1000
 
 set switchbuf+=newtab
+
+" Macのクリップボードと共有
+" set clipboard+=unnamed
